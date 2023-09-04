@@ -1,0 +1,23 @@
+<.header>
+  <%= @post.title %>
+  <:subtitle> By <%= @post.author %></:subtitle>
+  <:actions>
+    <.link href={~p"/posts/#{@post}/edit"}>
+      <.button>Edit</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title=""><%= @post.body %></:item>
+</.list>
+ <%=Enum.map(@post.comments, fn comment ->%>
+  <.list>
+    <:item title="Comments"><%= comment.name %></:item>
+    <:item title=""><%= comment.content %></:item>
+  </.list>
+  <% end) %>
+ 
+<.comment_form changeset={@comment_changeset} action={~p"/posts/#{@post}/comments"} />
+
+<.back navigate={~p"/posts"}>Posts</.back>
