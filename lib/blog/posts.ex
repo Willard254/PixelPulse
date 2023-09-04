@@ -1,6 +1,7 @@
 defmodule Blog.Posts do
     import Ecto.Query, warn: false
     alias Blog.Repo
+    alias Blog.Posts
     alias Blog.Posts.Post
     alias Blog.Comments.Comment
 
@@ -59,5 +60,10 @@ defmodule Blog.Posts do
   
     def change_comment(%Comment{} = comment, attrs \\ %{}) do
       Comment.changeset(comment, attrs)
+    end
+
+    def get_number_of_comments(post_id) do
+      post = Posts.get_post!(post_id) |> Repo.preload([:comments])
+      Enum.count(post.comments)
     end
 end

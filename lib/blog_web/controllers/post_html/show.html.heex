@@ -13,11 +13,9 @@
 </.list>
  <%=Enum.map(@post.comments, fn comment ->%>
   <.list>
-    <:item title="Comments"><%= comment.name %></:item>
+    <:item title="Comment"><%= comment.name %></:item>
     <:item title=""><%= comment.content %></:item>
   </.list>
   <% end) %>
  
 <.comment_form changeset={@comment_changeset} action={~p"/posts/#{@post}/comments"} />
-
-<.back navigate={~p"/posts"}>Posts</.back>

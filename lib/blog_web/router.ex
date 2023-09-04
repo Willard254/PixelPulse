@@ -18,6 +18,9 @@ defmodule BlogWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/about", AboutController, :about
+    get "/contact", ContactController, :contact
+    get "/privacy", PrivacyController, :privacy
     resources "/posts", PostController do
       resources "/comments", CommentController, only: [:create]
     end
