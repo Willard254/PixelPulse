@@ -1,21 +1,19 @@
 <.header>
   <%= @post.title %>
-  <:subtitle> By <%= @post.author %></:subtitle>
-  <:actions>
-    <.link href={~p"/posts/#{@post}/edit"}>
-      <.button>Edit</.button>
-    </.link>
-  </:actions>
+  <:subtitle> By <%= @post.author %> <br> <%= @post.inserted_at %> </:subtitle>
 </.header>
 
-<.list>
-  <:item title=""><%= @post.body %></:item>
-</.list>
- <%=Enum.map(@post.comments, fn comment ->%>
-  <.list>
-    <:item title="Comment"><%= comment.name %></:item>
-    <:item title=""><%= comment.content %></:item>
-  </.list>
+<br> <%= @post.body %> <br>
+
+<.header> <br>Comments<br> </.header>
+<%=Enum.map(@post.comments, fn comment ->%>
+    <div class="font-semibold">
+    <%= comment.name %><br>
+    </div>
+    <%= comment.content %> <br>
+    <div class="font-semibold">
+    <p align="right"> <%= comment.inserted_at %> </p>
+    </div>
   <% end) %>
  
 <.comment_form changeset={@comment_changeset} action={~p"/posts/#{@post}/comments"} />

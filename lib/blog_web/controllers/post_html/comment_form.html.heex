@@ -2,8 +2,10 @@
   <.error :if={@changeset.action}>
     Oops, something went wrong! Please check the errors below.
   </.error>
+  <div class="mx-0 max-w-sm">
   <.input field={f[:name]} type="text" label="Name" />
   <.input field={f[:content]} type="text" label="Comment" />
+  </div>
   <:actions>
     <.button>Comment</.button>
   </:actions>

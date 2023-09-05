@@ -7,6 +7,7 @@ defmodule BlogWeb.PostController do
 
   def index(conn, _params) do
     posts = Posts.list_posts()
+    IO.inspect(posts)
     render(conn, :index, posts: posts)
   end
 
@@ -42,7 +43,7 @@ defmodule BlogWeb.PostController do
 
   def update(conn, %{"id" => id, "post" => post_params}) do
     post = Posts.get_post!(id)
-
+    IO.inspect(post)
     case Posts.update_post(post, post_params) do
       {:ok, post} ->
         conn
