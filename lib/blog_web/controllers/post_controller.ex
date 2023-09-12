@@ -29,7 +29,10 @@ defmodule BlogWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Posts.get_post!(id)
+    post = 
+      id
+      |> Posts.get_post!()
+      |> Posts.inc_post_views()
     IO.inspect(post)
     comment_changeset = Posts.change_comment(%Comment{})
     render(conn, :show, post: post, comment_changeset: comment_changeset)

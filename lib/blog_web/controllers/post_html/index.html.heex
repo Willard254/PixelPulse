@@ -2,7 +2,7 @@
   Archive
   <:actions>
     <.link href={~p"/posts/new"}>
-      <.button>New Post</.button>
+      <.button>New</.button>
     </.link>
   </:actions>
 </.header>
@@ -10,6 +10,7 @@
 <.table id="posts" rows={@posts} row_click={&JS.navigate(~p"/posts/#{&1}")}>
   <:col :let={post} label="Title"><%= post.title %></:col>
   <:col :let={post} label="Source"><%= post.author %></:col>
+  <:col :let={post} label="Views"><%= post.views %></:col>
   <:col :let={post} label="Comments"><%= get_comments_count(post.id) %></:col>
   <:col :let={post} label="Date Posted"><%= post.inserted_at %></:col>
   <:action :let={post}>

@@ -11,6 +11,7 @@ defmodule Blog.Posts.Post do
 
     #new fields
     field :author, :string
+    field :views, :integer
 
     timestamps()
   end
@@ -18,7 +19,7 @@ defmodule Blog.Posts.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :body, :author])
-    |> validate_required([:title, :body, :author])
+    |> cast(attrs, [:title, :body, :author, :views])
+    |> validate_required([:title, :body, :author, :views])
   end
 end

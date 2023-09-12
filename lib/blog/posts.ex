@@ -35,6 +35,14 @@ defmodule Blog.Posts do
       Post.changeset(post, attrs)
     end
 
+    def inc_post_views(%Post{} = post) do
+      {1, [%Post{views: views}]} =
+        from(p in Post, where: p.id == ^post.id, select: [:views])
+        |> Repo.update_all(inc: [views: 1])
+
+      put_in(post.views, views)
+    end
+
     def create_comment(%Post{} = post, attrs \\ %{}) do
       post
       |> Ecto.build_assoc(:comments)
