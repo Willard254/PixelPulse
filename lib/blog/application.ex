@@ -17,9 +17,10 @@ defmodule Blog.Application do
       # Start Finch
       {Finch, name: Blog.Finch},
       # Start the Endpoint (http/https)
-      BlogWeb.Endpoint
+      BlogWeb.Endpoint,
       # Start a worker by calling: Blog.Worker.start_link(arg)
       # {Blog.Worker, arg}
+      BlogWeb.Presence
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
