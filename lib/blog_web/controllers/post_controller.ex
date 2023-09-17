@@ -7,7 +7,7 @@ defmodule BlogWeb.PostController do
 
   def index(conn, _params) do
     posts = Posts.list_posts()
-    IO.inspect(posts)
+    # IO.inspect(posts)
     render(conn, :index, posts: posts)
   end
 

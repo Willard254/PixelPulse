@@ -70,3 +70,10 @@ color: #333;
     margin-left: auto;
     border-radius: 32px;
 }
+
+.image{
+    display: flex;
+    width: 100%;
+    margin: 10;
+    height: 100%; 
+}

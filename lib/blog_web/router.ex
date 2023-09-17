@@ -34,6 +34,12 @@ defmodule BlogWeb.Router do
     end
   end
 
+  # scope "/", BlogWeb do
+  #   pipethrough [:browser, :require_authenticated_admins]
+
+
+  # end
+
   # Other scopes may use custom stacks.
   # scope "/api", BlogWeb do
   #   pipe_through :api
